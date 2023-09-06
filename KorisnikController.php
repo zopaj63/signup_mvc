@@ -9,10 +9,10 @@ class KorisnikController
     private $model;
     private $view;
 
-    public function __construct()
+    public function __construct($model, $view)
     {
-        $this->model=new KorisnikModel();
-        $this->view=new KorisnikView();
+        $this->model=$model;
+        $this->view=$view;
     }
 
 

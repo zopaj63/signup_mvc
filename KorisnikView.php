@@ -27,15 +27,20 @@ class KorisnikView
     public function prikaziKorisnike($svi_korisnici)
     {
         echo "<h3>Popis svih korisnika</h3>";
+        echo "<p>ID - Ime - Prezime - E-mail - TOKEN - status</p>";
 
         foreach($svi_korisnici as $korisnik)
         {
-            echo "<p>ID: {$korisnik['id']}</p>";
-            echo "<p>Ime: {$korisnik['ime']}</p>";
-            echo "<p>Prezime: {$korisnik['prezime']}</p>";
-            echo "<p>E-mail: {$korisnik['email']}</p>";
-            echo "<p>TOKEN: {$korisnik['token']}</p>";
-            echo "<hr>";
+            echo "<table border=1>
+            <tr>
+                <td>{$korisnik['id']}</td>
+                <td>{$korisnik['ime']}</td>
+                <td>{$korisnik['prezime']}</td>
+                <td>{$korisnik['email']}</td>
+                <td>{$korisnik['token']}</td>
+                <td>{$korisnik['status']}</td>
+            </tr>
+            </table>";
         }
     }
 }
