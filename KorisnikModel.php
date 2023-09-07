@@ -11,6 +11,13 @@ class KorisnikModel
     private $conn;
     private $table="korisnici";
 
+    public $ime;
+    public $prezime;
+    public $email;
+    public $lozinka;
+    public $lozinka_hash;
+    public $token;
+
     public function __construct()
     {
         $config=new Config('./config.ini');
@@ -18,15 +25,17 @@ class KorisnikModel
         $this->conn=$database->getConnection();
     }
 
+    // query za upis novog korisnika u bazu
     public function dodajKorisnika()
     {
-        $ime=htmlspecialchars($ime);
-        $prezime=htmlspecialchars($prezime);
-        $email=htmlspecialchars($email);
-        $token=bin2hex(random_bytes(16));
-        $lozinka_hash=password_hash($lozinka, PASSWORD_DEFAULT);
-
         $stmt=$this->conn->prepare("INSERT INTO ".$this->table."(ime, prezime, email, lozinka, token) VALUES (:ime, :prezime, :email, :lozinka, :token)");
+
+        $this->ime=htmlspecialchars(strip_tags($this->ime));
+        $this->prezime=htmlspecialchars(strip_tags($this->prezime));
+        $this->email=htmlspecialchars(strip_tags($this->email));
+        $token=bin2hex(random_bytes(16));
+        $lozinka_hash=password_hash($this->lozinka, PASSWORD_DEFAULT);
+
         $stmt->bindParam(":ime", $ime);
         $stmt->bindParam(":prezime", $prezime);
         $stmt->bindParam(":email", $email);
@@ -35,16 +44,13 @@ class KorisnikModel
 
         if($stmt->execute())
         {
-            $message_good= "Uspješna registracija";
+            return true;
         }
-        else
-        {
-            $message_bad= "Došlo je do greške";
-        }
+        return false; //bez else, vraća false i istodobno se prekida program
 
     }
 
-    // radi kontrole funkcionalnosti
+    // dohvat svih korisnika iz baze
     public function dohvatiSveKorisnike()
     {
         $stmt=$this->conn->prepare("SELECT * FROM ".$this->table);
@@ -53,22 +59,17 @@ class KorisnikModel
 
     }
 
+    // provjera postoji li upisani mail (korisnik) već u bazi
     public function emailPostoji($email)
-        {
-            $query="SELECT email FROM ".$this->table." WHERE email=?";
-            $stmt=$this->conn->prepare($query);
-            $stmt->bindParam(1, $email);
-            $stmt->execute();
+    {
+        $query="SELECT email FROM ".$this->table." WHERE email=:email";
+        $stmt=$this->conn->prepare($query);
+        $stmt->bindParam(":email", $email);
+        $stmt->execute();
 
-            if ($stmt->rowCount()>0)
-            {
-                return true; //mail već postoji u bazi
-            }
-            else
-            {
-                return false; //mail ne postoji u bazi
-            }
-        }
+        $user=$stmt->fetch();
+        return $user;
+    }
 
 
 

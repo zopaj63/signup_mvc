@@ -3,6 +3,7 @@
 class KorisnikView
 {
     
+    // medoda za prikaz registracijske forme
     public function prikaziFormu()
     {
         echo'
@@ -10,7 +11,7 @@ class KorisnikView
         <h2>Registracijska forma</h2>
             <hr>
             <p>Ispunite sve podatke:</p>
-            <form method="post" action="">
+            <form method="post" action="KorisnikController.php">
                 <input type="text" name ="ime" placeholder="Ime" required><br><br>
                 <input type="text" name ="prezime" placeholder="Prezime" required><br><br>
                 <input type="email" name ="email" placeholder="E-mail" required><br><br>
@@ -23,11 +24,25 @@ class KorisnikView
         ';
     }
 
-    // radi kontrole funkcionalnosti
+    // metoda za prikaz login-logout forme
+
+
+
+
+    // ispis svih korisnika iz baze, radi kontrole funkcionalnosti
     public function prikaziKorisnike($svi_korisnici)
     {
         echo "<h3>Popis svih korisnika</h3>";
-        echo "<p>ID - Ime - Prezime - E-mail - TOKEN - status</p>";
+        echo "<table border=1>
+        <tr>
+            <th>ID</th>
+            <th>Ime</th>
+            <th>Prezime</th>
+            <th>E-mail</th>
+            <th>TOKEN</th>
+            <th>status</th>
+        </tr>
+        </table><br>";
 
         foreach($svi_korisnici as $korisnik)
         {
@@ -43,6 +58,9 @@ class KorisnikView
             </table>";
         }
     }
+
+
+
 }
 
 

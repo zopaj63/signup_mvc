@@ -3,7 +3,8 @@
 include_once "./KorisnikModel.php";
 include_once "./KorisnikView.php";
 
-
+global $message_good;
+global $message_bad;
 class KorisnikController
 {
     private $model;
@@ -15,7 +16,7 @@ class KorisnikController
         $this->view=$view;
     }
 
-
+    // dohvat podataka s forme za registraciju
     public function dohvatiRegistraciju()
     {
         if (isset($_POST['registracija']))
@@ -29,15 +30,6 @@ class KorisnikController
             if($lozinka===$lozinkap)
             {
                 return true;
-
-                if (!$user)
-                {
-                    dodajKorisnika();
-                }
-                else
-                {
-                    $message_bad= "Korisnik s tim mailom već postoji";
-                }
 
             }
             else
@@ -53,15 +45,33 @@ class KorisnikController
         }
     }
 
-    // radi kontrole funkcionalnosti
+    // prikaz svih korisnika iz baze
     public function prikaziSveKorisnike()
     {
         $svi_korisnici=$this->model->dohvatiSveKorisnike()->fetchAll(PDO::FETCH_ASSOC);
         $this->view->prikaziKorisnike($svi_korisnici);
     }
 
+    // obrada forme i provedba regisracije
+    public function registrirajNovogKorisnika($ime, $prezime, $email, $lozinka_hash, $token)
+    {
+        if (!$user)
+        {            
+            $this->model->ime=$ime;
+            $this->model->prezime=$prezime;
+            $this->model->email=$email;
+            $this->model->lozinka_hash=$lozinka_hash;
+            $this->model->token=$token;
 
+            $this->model->dodajKorisnika();
 
+            $message_good="Uspješna registracija!";
+        }
+        else
+        {
+            $message_bad="Korisnik s tim e-mailom već postoji!";
+        }
+    }
 
 
 }
