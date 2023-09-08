@@ -45,18 +45,32 @@ class KorisnikController
         }
     }
 
+    // validacija unešenog e-maila
+    public function emailValidation($email)
+    {
+        if (filter_var($email, FILTER_VALIDATE_EMAIL))
+        {
+            return $email;
+        }
+        else
+        {
+            $message_bad="E-mail nije ispravnog formata";
+        }
+    }
+
     // prikaz svih korisnika iz baze
     public function prikaziSveKorisnike()
     {
         $svi_korisnici=$this->model->dohvatiSveKorisnike()->fetchAll(PDO::FETCH_ASSOC);
         $this->view->prikaziKorisnike($svi_korisnici);
+        $message_good="Uspješan prikaz svih korisnika!";
     }
 
     // obrada forme i provedba regisracije
     public function registrirajNovogKorisnika($ime, $prezime, $email, $lozinka_hash, $token)
     {
         if (!$user)
-        {            
+        {     
             $this->model->ime=$ime;
             $this->model->prezime=$prezime;
             $this->model->email=$email;

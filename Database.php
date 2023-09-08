@@ -22,7 +22,7 @@
         }
         catch(PDOEXception $e)
         {
-            die("Greška prilikom spajanja na bazu ".$e->getMessage());
+            die("Greška pri spajanja na bazu ".$e->getMessage());
         }
     }
 

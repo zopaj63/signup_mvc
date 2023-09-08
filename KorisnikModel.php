@@ -3,9 +3,6 @@
 include_once "Config.php";
 include_once "Database.php";
 
-global $message_good;
-global $message_bad;
-
 class KorisnikModel
 {
     private $conn;
@@ -32,7 +29,13 @@ class KorisnikModel
 
         $this->ime=htmlspecialchars(strip_tags($this->ime));
         $this->prezime=htmlspecialchars(strip_tags($this->prezime));
-        $this->email=htmlspecialchars(strip_tags($this->email));
+        $this->email=$email;
+
+        //proba:
+        //$ime="nekoime";
+        //$prezime="nekoprezime";
+        //$email="neki@ema.il";
+        
         $token=bin2hex(random_bytes(16));
         $lozinka_hash=password_hash($this->lozinka, PASSWORD_DEFAULT);
 

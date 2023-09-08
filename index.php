@@ -10,6 +10,7 @@
     include_once "KorisnikView.php";
     include_once "KorisnikController.php";
 
+
     // todo: signup - login - logout izbor
 
     $config=new Config("config.ini");
@@ -34,24 +35,21 @@
 
     $controller=new KorisnikController($model, $view);
     $controller->dohvatiRegistraciju();
-    $controller->registrirajNovogKorisnika($ime, $prezime, $email, $lozinka_hash, $token);
+    //ne radi:
+    //$controller->registrirajNovogKorisnika($ime, $prezime, $email, $lozinka_hash, $token);
+    
 
-
-
+    // samo za kontrolu funkcionalnosti
+    $controller->prikaziSveKorisnike();
+    $message_good="Uspješan prikaz svih korisnika";
 
 ?>
 
     <!-- ispis poruka -->
     <?php if ($message_good) ?>
-    <h4 style="color: darkgreen";><?php echo $message_good; ?></h4>
+    <h3 style="color: green";><?php echo $message_good; ?></h3>
     <php endif; ?>
     
     <?php if ($message_bad) ?>
-    <h4  style="color: red";><?php echo $message_bad; ?></h4>
-    <php endif; ?>   
-
-<?php
-    // samo za kontrolu funkcionalnosti
-    $controller->prikaziSveKorisnike();
-
-?>
+    <h3  style="color: red";><?php echo $message_bad; ?></h3>
+    <php endif; ?>  

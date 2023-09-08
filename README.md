@@ -13,6 +13,7 @@ MVC projekt registracijske forme (oop php)
 - [ ] Slanje potvrdnog e-maila
 - [ ] Pohrana podataka u bazu
 - [ ] Login forma
+- [ ] Logout (session?)
 - [ ] Testiranje funkcionalnosti
 - [ ] Prijenos na produkcijski server
 

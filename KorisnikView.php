@@ -8,7 +8,7 @@ class KorisnikView
     {
         echo'
         <hr>
-        <h2>Registracijska forma</h2>
+        <h1>Registracijska forma</h1>
             <hr>
             <p>Ispunite sve podatke:</p>
             <form method="post" action="KorisnikController.php">
@@ -32,7 +32,7 @@ class KorisnikView
     // ispis svih korisnika iz baze, radi kontrole funkcionalnosti
     public function prikaziKorisnike($svi_korisnici)
     {
-        echo "<h3>Popis svih korisnika</h3>";
+        echo "<h2>Popis svih korisnika</h2>";
         echo "<table border=1>
         <tr>
             <th>ID</th>
