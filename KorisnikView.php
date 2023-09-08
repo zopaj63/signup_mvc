@@ -39,6 +39,7 @@ class KorisnikView
             <th>Ime</th>
             <th>Prezime</th>
             <th>E-mail</th>
+            <th>Lozinka hashirana</th>
             <th>TOKEN</th>
             <th>status</th>
         </tr>
@@ -52,6 +53,7 @@ class KorisnikView
                 <td>{$korisnik['ime']}</td>
                 <td>{$korisnik['prezime']}</td>
                 <td>{$korisnik['email']}</td>
+                <td>{$korisnik['lozinka']}</td>
                 <td>{$korisnik['token']}</td>
                 <td>{$korisnik['status']}</td>
             </tr>

@@ -3,8 +3,9 @@
 include_once "./Database.php";
 include_once "./KorisnikModel.php";
 
-$database=new Database();
-$db=$database->connect();
+$config=new Config("config.ini");
+$db=Database::getInstance($config);
+$conn=$db->getConnection();
 
 $korisnikModel=new KorisnikModel($db);
 

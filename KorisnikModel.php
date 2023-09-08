@@ -35,7 +35,7 @@ class KorisnikModel
         //$ime="nekoime";
         //$prezime="nekoprezime";
         //$email="neki@ema.il";
-        
+
         $token=bin2hex(random_bytes(16));
         $lozinka_hash=password_hash($this->lozinka, PASSWORD_DEFAULT);
 
