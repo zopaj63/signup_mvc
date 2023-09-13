@@ -1,3 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evidencija</title>
+    <link href="./style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="wrapper">
+    <h1>Registracijska forma, MVC</h1>
+    <p><a href="https://github.com/zopaj63/signup_mvc" target="_blank">GitHub</a></p><br>
+
+
 <?php
 
     //privremeni debuging
@@ -53,3 +70,9 @@
     <?php if ($message_bad) ?>
     <h3  style="color: red";><?php echo $message_bad; ?></h3>
     <php endif; ?>  
+
+
+    </div>
+    
+    </body>
+    </html>

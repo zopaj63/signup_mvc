@@ -9,7 +9,7 @@ $conn=$db->getConnection();
 
 $korisnikModel=new KorisnikModel($db);
 
-$testEmail="zoran.pajnic@ege.hr";
+$testEmail="pk@pk.pk";
 
 if ($korisnikModel->emailPostoji($testEmail))
 {

@@ -8,9 +8,7 @@ class KorisnikView
     {
         echo'
         <hr>
-        <h1>Registracijska forma</h1>
-            <hr>
-            <p>Ispunite sve podatke:</p>
+        <h2>Registracija</h2>
             <form method="post" action="KorisnikController.php">
                 <input type="text" name ="ime" placeholder="Ime" required><br><br>
                 <input type="text" name ="prezime" placeholder="Prezime" required><br><br>
@@ -20,7 +18,6 @@ class KorisnikView
 
                 <input type="submit" name="registracija" value="Registriraj se">
             </form>
-            <hr>
         ';
     }
 
@@ -33,7 +30,7 @@ class KorisnikView
     public function prikaziKorisnike($svi_korisnici)
     {
         echo "<h2>Popis svih korisnika</h2>";
-        echo "<table border=1>
+        echo "<table>
         <tr>
             <th>ID</th>
             <th>Ime</th>
@@ -42,12 +39,11 @@ class KorisnikView
             <th>Lozinka hashirana</th>
             <th>TOKEN</th>
             <th>status</th>
-        </tr>
-        </table><br>";
+        </tr>";
 
         foreach($svi_korisnici as $korisnik)
         {
-            echo "<table border=1>
+            echo "
             <tr>
                 <td>{$korisnik['id']}</td>
                 <td>{$korisnik['ime']}</td>
@@ -56,12 +52,10 @@ class KorisnikView
                 <td>{$korisnik['lozinka']}</td>
                 <td>{$korisnik['token']}</td>
                 <td>{$korisnik['status']}</td>
-            </tr>
-            </table>";
+            </tr>";          
         }
+        echo "</table>";
     }
-
-
 
 }
 

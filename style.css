@@ -1,0 +1,68 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/* RESET ************************************************************ */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* PRAVILA ZA UREĐIVANJE HTML ELEMENATA ***************************** */
+body {
+    background-color: #eefff5;
+    color: rgb(13, 44, 26);
+    font-family: "Trebuchet MS", sans-serif;
+}
+
+.wrapper {
+    max-width: 1200px;
+    margin: 40px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Titillium Web', sans-serif;
+    color: darkgray;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 60%;
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid black;
+}
+
+th {
+    background-color: lightgreen;
+    border-top: 2px solid black;
+}
+
+tr:hover {
+    background-color: lightgreen;
+}
+
+input {
+    padding: 6px;
+    border-radius: 4px;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: small;
+    color: blueviolet;
+}
